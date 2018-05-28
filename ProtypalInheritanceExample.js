@@ -7,6 +7,7 @@ var BaseBird = {
     return this.state.name;
   },
   setName: function(name){
+  	this._arr['name'] = name;
     this.state.name = name;
   },
   getFamily: function(){
@@ -43,7 +44,8 @@ var FlyingAndSwimmingBird = Object.assign({}, BaseBird, CanSwim, CanFly);
 var BirdFactory = {
 	create: function(birdFunctionsToBeInPrototype){
   	var bird = Object.create(birdFunctionsToBeInPrototype);
-    //bird.state = Object.assign({});
+    bird.state = Object.assign({});
+    bird._arr = [];
     return bird;
   } 
 }
@@ -60,10 +62,5 @@ flyingBird2.setName('flyingBird2');
 
 var flyingAndSwimmingBird1 = BirdFactory.create(FlyingAndSwimmingBird);
 flyingAndSwimmingBird1.setName('flyingAndSwimmingBird1');
-var flyingAndSwimmingBird = BirdFactory.create(FlyingAndSwimmingBird);
-flyingAndSwimmingBird1.setName('flyingAndSwimmingBird2');
-
-console.log('End');
-
-
-
+var flyingAndSwimmingBird2 = BirdFactory.create(FlyingAndSwimmingBird);
+flyingAndSwimmingBird2.setName('flyingAndSwimmingBird2');
